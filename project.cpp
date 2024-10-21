@@ -287,14 +287,14 @@ int main() {
         ifstream fileIn("state.txt");
         int stateCounter;
 
-        if (fileIn >> stateCounter) {
+        if (fileIn >> stateCounter && stateCounter != 0) {
             Traveller::counter = stateCounter;
         } else {
             ofstream fileOut("state.txt", ios::trunc);
             if (!fileOut) {
                 throw "Error creating state file!";
             }
-            fileOut << 0;
+            fileOut << 1000;
             fileOut.close();
         }
 
